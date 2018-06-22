@@ -4,17 +4,17 @@ using AlgorithmService;
 namespace AlgorithmService.Tests
 {
     [TestClass]
-    public class BasicAlgorithmService_ConvertToFShould
+    public class BasicAlgorithmServiceTests
     {
         private readonly BasicAlgorithmService _basicAlgorithmService;
 
-        public BasicAlgorithmService_ConvertToFShould()
+        public BasicAlgorithmServiceTests()
         {
             _basicAlgorithmService = new BasicAlgorithmService();
         }
 
         [TestMethod]
-        public void ReturnCorrectType()
+        public void ConvertToF_ReturnCorrectType()
         {
             var result = _basicAlgorithmService.ConvertToF(0);
 
@@ -27,12 +27,11 @@ namespace AlgorithmService.Tests
         [DataRow(0, 32)]
         [DataRow(20, 68)]
         [DataRow(30, 86)]
-        public void ReturnCorrectValue(double input, double exptected)
+        public void ConvertToF_ReturnCorrectValue(double input, double expected)
         {
             var result = _basicAlgorithmService.ConvertToF(input);
 
-            Assert.AreEqual(exptected, result);
+            Assert.AreEqual(expected, result);
         }
     }
-    
 }
