@@ -33,5 +33,24 @@ namespace AlgorithmService.Tests
 
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void ReverseString_ReturnCorrectType()
+        {
+            var result = _basicAlgorithmService.ReverseString("hello");
+
+            Assert.IsInstanceOfType(result, typeof(string));
+        }
+
+        [DataTestMethod]
+        [DataRow("hello", "olleh")]
+        [DataRow("Howdy", "ydwoH")]
+        [DataRow("Greetings from Earth", "htraE morf sgniteerG")]
+        public void ReverseString_ReturnCorrectValue(string input, string expected)
+        {
+            var result = _basicAlgorithmService.ReverseString(input);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
