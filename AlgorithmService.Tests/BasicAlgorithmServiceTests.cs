@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AlgorithmService;
+using System.Collections;
 
 namespace AlgorithmService.Tests
 {
@@ -90,6 +91,86 @@ namespace AlgorithmService.Tests
         public void FindLongestWordLength_ReturnCorrectValue(string input, int expected)
         {
             var result = _basicAlgorithmService.FindLongestWordLength(input);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void LargestOfFour_ReturnCorrectType()
+        {
+            var input = new int[4][]
+            {
+                new int[4] { 4, 5, 1, 3 },
+                new int[4] { 13, 27, 18, 26 },
+                new int[4] { 32, 35, 37, 39 },
+                new int[4] { 1000, 1001, 857, 1 },
+            };
+
+            var result = _basicAlgorithmService.LargestOfFour(input);
+
+            Assert.IsInstanceOfType(result, typeof(IEnumerable));
+        }
+
+        [TestMethod]
+        public void LargestOfFour_ReturnCorrectValue()
+        {
+            var input = new int[4][]
+            {
+                new int[4] { 4, 5, 1, 3 },
+                new int[4] { 13, 27, 18, 26 },
+                new int[4] { 32, 35, 37, 39 },
+                new int[4] { 1000, 1001, 857, 1 },
+            };
+
+            var expected = new int[4] { 5, 27, 39, 1001 };
+
+            var result = _basicAlgorithmService.LargestOfFour(input);
+
+            CollectionAssert.AreEqual(expected, result);
+
+            input = new int[4][]
+            {
+                new int[4] { 4, 9, 1, 3 },
+                new int[4] { 13, 35, 18, 26 },
+                new int[4] { 32, 35, 97, 39 },
+                new int[4] { 1000000, 1001, 857, 1 },
+            };
+
+            expected = new int[4] { 9, 35, 97, 1000000 };
+
+            result = _basicAlgorithmService.LargestOfFour(input);
+
+            CollectionAssert.AreEqual(expected, result);
+
+            input = new int[4][]
+            {
+                new int[4] { 17, 23, 25, 12 },
+                new int[4] { 25, 7, 34, 48 },
+                new int[4] { 4, -10, 18, 21 },
+                new int[4] { -72, -3, -17, -10 },
+            };
+
+            expected = new int[4] { 25, 48, 21, -3 };
+
+            result = _basicAlgorithmService.LargestOfFour(input);
+
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [DataTestMethod]
+        [DataRow("Bastian", "n", true)]
+        [DataRow("Congratulation", "on", true)]
+        [DataRow("Connor", "n", false)]
+        [DataRow("Walking on water and developing software from a specification are easy if both are frozen", "specification", false)]
+        [DataRow("He has to give me a new name", "name", true)]
+        [DataRow("Open sesame", "same", true)]
+        [DataRow("Open sesame", "pen", false)]
+        [DataRow("Open sesame", "game", false)]
+        [DataRow("If you want to save our world, you must hurry. We dont know how much longer we can withstand the nothing", "mountain", false)]
+        [DataRow("Abstraction", "action", true)]
+        public void ConfirmEnding_ReturnCorrectType(string input, string target, bool expected)
+        {
+            var result = _basicAlgorithmService.ConfirmEnding(input, target);
 
             Assert.AreEqual(expected, result);
         }

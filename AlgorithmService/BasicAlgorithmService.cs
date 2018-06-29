@@ -55,5 +55,20 @@ namespace AlgorithmService
                     .Select(w => w.Length)
                     .Max();
         }
+
+        public int[] LargestOfFour(int[][] input)
+        {
+            if (input.Length != 4)
+                throw new InvalidOperationException("Your array must have 4 items");
+
+            return input
+                    .Select(i => i.Max())
+                    .ToArray();
+        }
+
+        public bool ConfirmEnding(string input, string target)
+        {
+            return input.Substring(input.Length - target.Length) == target;
+        }
     }
 }
