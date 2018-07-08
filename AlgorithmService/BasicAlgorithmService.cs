@@ -70,5 +70,10 @@ namespace AlgorithmService
         {
             return input.Substring(input.Length - target.Length) == target;
         }
+
+        public string RepeatStringNumTimes(string input, int numOfTimes)
+        {
+            throw new NotImplementedException("Write tests first");
+        }
     }
 }

@@ -174,5 +174,19 @@ namespace AlgorithmService.Tests
 
             Assert.AreEqual(expected, result);
         }
+
+        [DataTestMethod]
+        [DataRow("*", 3, "***")]
+        [DataRow("abc", 3, "abcabcabc")]
+        [DataRow("abc", 4, "abcabcabcabc")]
+        [DataRow("abc", 1, "abc")]
+        [DataRow("*", 8, "********")]
+        [DataRow("abc", -2, "")]
+        public void RepeatStringNumTimes_ReturnCorrectValue(string input, int numOfTimes, string expected)
+        {
+            var result = _basicAlgorithmService.RepeatStringNumTimes(input, numOfTimes);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
