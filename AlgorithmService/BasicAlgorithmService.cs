@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AlgorithmService
@@ -45,6 +46,8 @@ namespace AlgorithmService
             // return sum;
         }
 
+        // Return the length of the longest word in a provided sentence.
+        // The response should be a number.
         public int FindLongestWordLength(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -56,6 +59,8 @@ namespace AlgorithmService
                     .Max();
         }
 
+        // Return an array consisting of the largest number from each
+        // provided sub-array.
         public int[] LargestOfFour(int[][] input)
         {
             if (input.Length != 4)
@@ -66,6 +71,8 @@ namespace AlgorithmService
                     .ToArray();
         }
 
+        // Check if a string (first argument) ends with the given target
+        // string (second argument)
         public bool ConfirmEnding(string input, string target)
         {
             return input.Substring(input.Length - target.Length) == target;
@@ -73,7 +80,24 @@ namespace AlgorithmService
 
         public string RepeatStringNumTimes(string input, int numOfTimes)
         {
-            throw new NotImplementedException("Write tests first");
+            if (numOfTimes <= 0)
+                return "";
+
+            var inputList = new List<string>();
+            for (int i = 0; i < numOfTimes; i++)
+            {
+                inputList.Add(input);
+            }
+
+            return string.Join("", inputList);
+        }
+
+        // Truncate a string (first argument) if it is longer than the
+        // given maximum string length (second argument)
+        // Return the truncated string with a ... ending
+        public string TruncateString(string input, int length)
+        {
+            throw new NotImplementedException("writing tests first");
         }
     }
 }
